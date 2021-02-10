@@ -84,9 +84,9 @@ export class News extends Component {
       filteredLaunches,
     } = this.state;
       console.log("🚀 ~ file: News.jsx ~ line 86 ~ News ~ render ~ filteredLaunches", filteredLaunches)
-    console.log(result.launch_site[0].site_name)
-    const defaultOptionLaunch = launch_sites[0];
-    const defaultOptionRocket = rockets[0];
+    // console.log(result.launch_site[0].site_name)
+    // const defaultOptionLaunch = launch_sites[0];
+    // const defaultOptionRocket = rockets[0];
 
 
     return (
