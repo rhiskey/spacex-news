@@ -107,11 +107,11 @@ export class News extends Component {
 
     var filteredResults = result.filter(
       rocket => {
-        if ((fLauchSite.value && fRocketName.value == null) || (fLauchSite.value && fRocketName.value == "All"))
+        if ((fLauchSite.value && fRocketName.value == null) || (fLauchSite.value && fRocketName.value === "All"))
           return rocket.launch_site.site_name.includes(fLauchSite.value);
-        else if ((fRocketName.value && fLauchSite.value == null) || (fRocketName.value && fLauchSite.value == "All"))
+        else if ((fRocketName.value && fLauchSite.value == null) || (fRocketName.value && fLauchSite.value === "All"))
           return rocket.rocket.rocket_name.includes(fRocketName.value)
-        else if ((fLauchSite.value == null && fRocketName.value == null) || ((fLauchSite.value == "All" && fRocketName.value == "All")))
+        else if ((fLauchSite.value == null && fRocketName.value == null) || ((fLauchSite.value == "All" && fRocketName.value === "All")))
           return rocket
         else {
           return rocket.launch_site.site_name.includes(fLauchSite.value) &&
@@ -171,7 +171,7 @@ export class News extends Component {
                   </tbody>
                 </table>
               </Fragment>
-              {!this.state.done ? (<div>Loading...<br/><img src={process.env.PUBLIC_URL + '/preloader.gif'} /></div>/*<Skeleton variant="rect" width={800} height={300} />*/) : (<Container launches={filteredResults} />)}
+              {!this.state.done ? (<div>Loading...<br/><img src={process.env.PUBLIC_URL + '/preloader.gif'} alt="loading" /></div>/*<Skeleton variant="rect" width={800} height={300} />*/) : (<Container launches={filteredResults} />)}
             </div>
           </div>
         </center>
