@@ -170,7 +170,15 @@ export class News extends Component {
                   </tbody>
                 </table>
               </Fragment>
-              {!this.state.done ? (<div>Loading...<br/><img src={process.env.PUBLIC_URL + '/preloader.gif'} alt="loading" /></div>/*<Skeleton variant="rect" width={800} height={300} />*/) : (<Container launches={filteredResults} />)}
+              {!this.state.done ?
+                (<center><div>
+                  Loading...
+                <br />
+                  <img src={process.env.PUBLIC_URL + '/preloader.gif'} alt="loading" />
+                </div>
+                </center>
+                /*<Skeleton variant="rect" width={800} height={300} />*/)
+                : (<Container launches={filteredResults} />)}
             </div>
           </div>
         </center>
