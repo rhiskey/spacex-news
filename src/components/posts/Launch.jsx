@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Container from "./Container";
-import Filter from "./Filter";
+// import Filter from "./Filter";
 import "react-dropdown/style.css";
 import Dropdown from "react-dropdown";
 import './Launch.css';
@@ -19,7 +19,6 @@ export class News extends Component {
   };
 
   componentDidMount() {
-    let self = this;
     this.fetchData(process.env.REACT_APP_BASE_PATH);
   }
 
