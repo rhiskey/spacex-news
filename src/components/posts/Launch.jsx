@@ -110,7 +110,7 @@ export class News extends Component {
           return rocket.launch_site.site_name.includes(fLauchSite.value);
         else if ((fRocketName.value && fLauchSite.value == null) || (fRocketName.value && fLauchSite.value === "All"))
           return rocket.rocket.rocket_name.includes(fRocketName.value)
-        else if ((fLauchSite.value == null && fRocketName.value == null) || ((fLauchSite.value == "All" && fRocketName.value === "All")))
+        else if ((fLauchSite.value == null && fRocketName.value == null) || ((fLauchSite.value === "All" && fRocketName.value === "All")))
           return rocket
         else {
           return rocket.launch_site.site_name.includes(fLauchSite.value) &&
