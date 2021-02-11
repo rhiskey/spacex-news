@@ -4,9 +4,10 @@ import {News} from './components/posts/Launch'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-         <News/>
-      </header>
+      {/* <header className="App-header">
+        
+      </header> */}
+      <News/>
     </div>
   );
 }
