@@ -4,7 +4,7 @@ import Filter from "./Filter";
 import "react-dropdown/style.css";
 import Dropdown from "react-dropdown";
 import './Launch.css';
-// const BASE_PATH = "https://api.spacexdata.com/v3/launches";
+// import Skeleton from '@material-ui/lab/Skeleton';
 
 
 export class News extends Component {
@@ -14,17 +14,29 @@ export class News extends Component {
     rockets: [],
     fLauchSite: "",
     fRocketName: "",
+    isLoading: undefined,
+    done: undefined
   };
 
   componentDidMount() {
+    let self = this;
     this.fetchData(process.env.REACT_APP_BASE_PATH);
   }
 
   fetchData = (api) => {
-    fetch(`${api}`)
-      .then((res) => res.json())
-      .then((result) => this.setNews(result))
-      .catch((error) => error);
+    let self = this;
+    setTimeout(() => {
+      fetch(`${api}`)
+        .then((res) => res.json())
+        .then(function (result) {
+          self.setState({ isLoading: true });
+          self.setNews(result);
+          setTimeout(() => {
+            self.setState({ done: true });
+          }, 1000);
+        })
+        .catch((error) => error);
+    }, 1200);
   };
 
   setNews = (result) => {
@@ -79,14 +91,20 @@ export class News extends Component {
       rockets,
       fLauchSite,
       fRocketName,
+      isLoading,
+      done
     } = this.state;
-
+    console.log('loading?', isLoading)
+    console.log('done?', done);
     // const filteredLaunches = result.filter((rocket) => 
     //   rocket.launch_site.site_name == fLauchSite.value
     // );
     // const filteredRockets= result.filter((rocket) => 
     //   rocket.rocket.rocket_name == fRocketName.value
     // );
+    const defaultOption1 = launch_sites[4];
+    const defaultOption2 = rockets[3];
+
     var filteredResults = result.filter(
       rocket => {
         if ((fLauchSite.value && fRocketName.value == null) || (fLauchSite.value && fRocketName.value == "All"))
@@ -106,8 +124,6 @@ export class News extends Component {
       return a.launch_date_utc.localeCompare(b.launch_date_utc);
     });
 
-    const defaultOption1 = launch_sites[4];
-    const defaultOption2 = rockets[3];
 
     return (
       <Fragment>
@@ -155,7 +171,7 @@ export class News extends Component {
                   </tbody>
                 </table>
               </Fragment>
-              <Container launches={filteredResults} />
+              {!this.state.done ? (<div>Loading...<br/><img src={process.env.PUBLIC_URL + '/preloader.gif'} /></div>/*<Skeleton variant="rect" width={800} height={300} />*/) : (<Container launches={filteredResults} />)}
             </div>
           </div>
         </center>
