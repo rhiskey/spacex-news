@@ -5,7 +5,6 @@ import "react-dropdown/style.css";
 import Dropdown from "react-dropdown";
 import './Launch.css';
 // import Skeleton from '@material-ui/lab/Skeleton';
-import AnimatedNumber from "animated-number-react";
 
 
 export class News extends Component {
@@ -50,7 +49,6 @@ export class News extends Component {
   }
 
   setNews = (result) => {
-    // let res = this.propSort(result,'launch_date_utc',true)
     this.setState({ result: result });
 
 
@@ -134,7 +132,7 @@ export class News extends Component {
           <div className="news-page">
             <div className="news-body" >
               {!done ? (<h1>Launches</h1>) : (
-                <h1>Launches <AnimatedNumber value={filteredResults.length} /></h1>
+                <h1>Launches {filteredResults.length}</h1>
               )}
               {/* 
         < Filter

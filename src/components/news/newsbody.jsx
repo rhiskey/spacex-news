@@ -6,23 +6,16 @@ import "./newsbody.css";
 export class NewsPostClass extends Component {
 
   render() {
-    //const isUpcoming = this.props.upcoming; //true/false
     var details = this.props.details;
     const title = this.props.title;
     const image = this.props.image;
     const date = this.props.date;
-    // if (details == null) {
-    //   details = "Upcoming";
-    // }
 
     return (
       <Fragment>
         <li className="news">
           <div className="description">
             <table className="tbl">
-            {/* <thead>
-                  
-                  </thead> */}
               <tbody>
                 <tr>
                   <td rowSpan="2" className="left">
@@ -39,7 +32,6 @@ export class NewsPostClass extends Component {
                         {new Date(date).toLocaleDateString()}
                       </td>
                     </tr>
-                    {/* <tr class="spacer"></tr> */}
                     <tr align="left" className="text">
                       <td colSpan="2" >
                         {details === null ? (<p>Upcoming</p>) : (details)}
@@ -49,10 +41,6 @@ export class NewsPostClass extends Component {
                 </tr>
               </tbody>
             </table>
-            {/* <span className="newsTitle">{title}</span>
-      <span className="text">{details}</span>
-      <span className="date">{new Date(date).toLocaleDateString()}</span>
-      <span className="image">{image}</span> */}
           </div>
         </li>
       </Fragment>
