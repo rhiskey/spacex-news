@@ -11,9 +11,9 @@ export class NewsPostClass extends Component {
     const title = this.props.title;
     const image = this.props.image;
     const date = this.props.date;
-    if (details == null) {
-      details = "Upcoming";
-    }
+    // if (details == null) {
+    //   details = "Upcoming";
+    // }
 
     return (
       <Fragment>
@@ -23,7 +23,9 @@ export class NewsPostClass extends Component {
               <tbody>
                 <tr>
                   <td rowSpan="2" className="left">
-                    <img className="image" src={image} alt="Preview_Mark" />
+                    {!image ? (<div className="rectangle">Preview Not Avalible</div>)
+                      : (<img className="image" src={image} alt="Preview_Mark" />)
+                    }
                   </td>
                   <td className="right">
                     <tr className="title-date">
@@ -35,8 +37,10 @@ export class NewsPostClass extends Component {
                       </td>
                     </tr>
 
-                    <tr colSpan="2" align="left" className="text">
-                      {details}
+                    <tr align="left" className="text">
+                      <td colSpan="2" >
+                      {details===null ? (<p>Upcoming</p>):(details)}
+                      </td>
                     </tr>
                   </td>
                 </tr>

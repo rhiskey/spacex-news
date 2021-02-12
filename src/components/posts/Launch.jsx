@@ -177,11 +177,12 @@ export class News extends Component {
                 </table>
               </Fragment>
               {!done ?
-                (<div>
+                (<center><div className="loading-skeleton">
                   Loading...
                 <br />
                   <img src={process.env.PUBLIC_URL + '/preloader.gif'} alt="loading" />
                 </div>
+                </center>
       
                 /*<Skeleton variant="rect" width={800} height={300} />*/)
                 : (

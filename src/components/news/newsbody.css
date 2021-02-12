@@ -19,6 +19,15 @@
   width: 200px;
   height: 200px;
 }
+.rectangle{
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: gainsboro;
+  text-align: center;
+  color:white;
+  /* margin:20px auto; */
+}
 
 .newsTitle {
   display: block;
