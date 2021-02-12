@@ -5,6 +5,7 @@ import "react-dropdown/style.css";
 import Dropdown from "react-dropdown";
 import './Launch.css';
 // import Skeleton from '@material-ui/lab/Skeleton';
+import AnimatedNumber from "animated-number-react";
 
 
 export class News extends Component {
@@ -38,8 +39,20 @@ export class News extends Component {
     }, 1200);
   };
 
+  propSort = function (array, prop, desc) {
+    array.sort(function (a, b) {
+      if (a[prop] < b[prop])
+        return desc ? 1 : -1;
+      if (a[prop] > b[prop])
+        return desc ? -1 : 1;
+      return 0;
+    });
+  }
+
   setNews = (result) => {
-    this.setState({ result });
+    // let res = this.propSort(result,'launch_date_utc',true)
+    this.setState({ result: result });
+
 
     const launch_sites = [...new Set(result.map((x) => x.launch_site.site_name))];
     this.setState({ launch_sites });
@@ -93,14 +106,7 @@ export class News extends Component {
       isLoading,
       done
     } = this.state;
-    console.log('loading?', isLoading)
-    console.log('done?', done);
-    // const filteredLaunches = result.filter((rocket) => 
-    //   rocket.launch_site.site_name == fLauchSite.value
-    // );
-    // const filteredRockets= result.filter((rocket) => 
-    //   rocket.rocket.rocket_name == fRocketName.value
-    // );
+
     const defaultOption1 = launch_sites[4];
     const defaultOption2 = rockets[3];
 
@@ -119,17 +125,17 @@ export class News extends Component {
       }
     );
 
-    filteredResults = filteredResults.sort(function (a, b) {
-      return a.launch_date_utc.localeCompare(b.launch_date_utc);
-    });
-
-
+    var sortedLaunches = filteredResults.slice().sort((a, b) => b.launch_year - a.launch_year)
+    sortedLaunches = sortedLaunches.sort((a,b) => b.launch_date_unix - a.launch_date_unix)
+    
     return (
       <Fragment>
         <center>
           <div className="news-page">
-            <div >
-              <h1>Launches {filteredResults.length}</h1>
+            <div className="news-body" >
+              {!this.state.done ? (<h1>Launches</h1>) : (
+                <h1>Launches <AnimatedNumber value={filteredResults.length} /></h1>
+              )}
               {/* 
         < Filter
               launch_sites={launch_sites}
@@ -178,7 +184,11 @@ export class News extends Component {
                 </div>
                 </center>
                 /*<Skeleton variant="rect" width={800} height={300} />*/)
-                : (<Container launches={filteredResults} />)}
+                : (
+                  filteredResults.length <= 0 ? (<p>Nothing found...</p>) : (
+                    <Container launches={sortedLaunches} />
+                  )
+                )}
             </div>
           </div>
         </center>
