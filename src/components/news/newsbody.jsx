@@ -19,11 +19,14 @@ export class NewsPostClass extends Component {
       <Fragment>
         <li className="news">
           <div className="description">
-            <table>
+            <table className="tbl">
+            {/* <thead>
+                  
+                  </thead> */}
               <tbody>
                 <tr>
                   <td rowSpan="2" className="left">
-                    {!image ? (<div className="rectangle">Preview Not Avalible</div>)
+                    {!image ? (<div className="rectangle"><div className="prev-text">Preview Not Avalible</div></div>)
                       : (<img className="image" src={image} alt="Preview_Mark" />)
                     }
                   </td>
@@ -36,10 +39,10 @@ export class NewsPostClass extends Component {
                         {new Date(date).toLocaleDateString()}
                       </td>
                     </tr>
-
+                    {/* <tr class="spacer"></tr> */}
                     <tr align="left" className="text">
                       <td colSpan="2" >
-                      {details===null ? (<p>Upcoming</p>):(details)}
+                        {details === null ? (<p>Upcoming</p>) : (details)}
                       </td>
                     </tr>
                   </td>
