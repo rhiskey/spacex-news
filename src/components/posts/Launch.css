@@ -1,18 +1,23 @@
 .news-page{
-    background-color: #282c34;
-    min-height: 100vh;
+    /* background-color: #282c34;
+    min-height: 100vh; */
     /* display: flex; */
     /* flex-direction: column; */
-    align-items: center;
+    /* align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
+    color: white; */
+
+    width: 50%;
+    margin: 0 auto;
+    text-align: left;
+    width: 800px;
 }
 .news-body{
     /* top: 10%; */
     /* width: 50%;  */
-    margin: 0 auto;
+    /* margin: 0 auto;
     text-align: left;
-    width: 800px;
+    width: 800px; */
 }
 
