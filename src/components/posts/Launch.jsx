@@ -103,7 +103,7 @@ export class News extends Component {
       rockets,
       fLauchSite,
       fRocketName,
-      isLoading,
+      // isLoading,
       done
     } = this.state;
 
@@ -133,7 +133,7 @@ export class News extends Component {
         <center>
           <div className="news-page">
             <div className="news-body" >
-              {!this.state.done ? (<h1>Launches</h1>) : (
+              {!done ? (<h1>Launches</h1>) : (
                 <h1>Launches <AnimatedNumber value={filteredResults.length} /></h1>
               )}
               {/* 
@@ -176,7 +176,7 @@ export class News extends Component {
                   </tbody>
                 </table>
               </Fragment>
-              {!this.state.done ?
+              {!done ?
                 (<center><div>
                   Loading...
                 <br />
