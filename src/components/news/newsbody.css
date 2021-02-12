@@ -8,23 +8,29 @@
 .news {
   /* width: 800px; */
   margin: 10px 0;
-  padding: 20px 30px;
+  /* padding: 20px 30px; */
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
   list-style-type: none;
 }
 
 .tbl {
   /* width:100%; */
-  table-layout: fixed;
+  /* table-layout: fixed; */
+  /* table-layout: auto; */
   /* width: 100%; */
   height: 100%;
-  border-spacing: 5px 5px;
+  /* border-spacing: 5px 5px; */
 }
 
-.tbl .th, .tbl .td {
+.tbl th, .tbl td {
   overflow: hidden;
   height: 100%;
-  width: 100%;
+  /* width: 100%; */
+  
+}
+.tbl tr:last-child {
+    /* width: 100%; */
+    /* white-space: pre-wrap; */
 }
 
 .prev-text {
@@ -32,14 +38,14 @@
 }
 
 .image {
-  width: 200px;
-  height: 200px;
+  max-width: 100px;
+  max-height: 100px;
 }
 
 .rectangle {
   display: inline-block;
-  width: 200px;
-  height: 200px;
+  max-width: 100px;
+  max-height: 100px;
   background: gainsboro;
   text-align: center;
   color: white;
@@ -51,9 +57,10 @@
 }
 
 .newsTitle {
-  display: block;
+  /* display: block; */
   /* margin-bottom: 10px; */
-  font-size: larger;
+  font-size: small;
+  font-weight: bold;
 }
 
 /* .description span { */
@@ -61,20 +68,23 @@
 /* padding: 0 10px; */
 
 /* } */
-.description{
-  display: flex;
-  flex-direction: row;
-}
 
-.description .text {
+
+.content .text {
   /* padding-left: 20px; */
-  font-size: medium;
+  font-size: small;
   /* margin-top: 30px; */
 }
 
-.description .date {
-  font-size: large;
-  margin-right: 0px;
+.content .date {
+  font-size: small;
+  text-align: right; 
+  font-weight: bold;
+  padding-right:0px;
+
+  position: relative;
+  top: 0;
+  right: 0;
 }
 
 /* .description .newsTitle{
@@ -87,10 +97,41 @@
   padding-top: 0;
 }
 
-.description span:not(:last-child) {
+
+td:empty::after{
+  content: "\00a0";
+}
+
+.content span:not(:last-child) {
   border-right: 1px solid #000;
 }
 
 .title-date {
   /* margin-right: 0; */
+}
+
+.content{
+  /* max-width: 1140px; */
+  margin: 0 auto; /*center*/
+  /* display: grid; */
+  /* grid-template-columns: repeat (auto-fit, 360px ); */
+  /* grid-gap: 20px; */
+
+
+  /* display: flex;
+  flex-direction: row; */
+}
+.item{
+  height: 200px;
+  background: gray;
+}
+.item_big{
+  grid-column: span 1/-2;
+  padding: 48px;
+  display: grid;
+  align-items: content;
+}
+
+.item__text{
+  padding: 24px;
 }

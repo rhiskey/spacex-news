@@ -13,6 +13,8 @@ class Container extends Component {
                         date={launch.launch_date_utc}
                         image={launch.links.mission_patch_small}
                         upcoming={launch.upcoming}
+                        link={launch.links.article_link}
+                        video={launch.links.video_link}
                     />
                 )}
             </Fragment>
