@@ -177,12 +177,12 @@ export class News extends Component {
                 </table>
               </Fragment>
               {!done ?
-                (<center><div>
+                (<div>
                   Loading...
                 <br />
                   <img src={process.env.PUBLIC_URL + '/preloader.gif'} alt="loading" />
                 </div>
-                </center>
+      
                 /*<Skeleton variant="rect" width={800} height={300} />*/)
                 : (
                   filteredResults.length <= 0 ? (<p>Nothing found...</p>) : (
