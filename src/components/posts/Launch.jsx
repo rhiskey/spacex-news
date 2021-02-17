@@ -180,6 +180,7 @@ export class News extends Component {
                 <br />
                   <img src={process.env.PUBLIC_URL + '/preloader.gif'} alt="loading" />
                 </div>
+                
                 </center>
       
                 /*<Skeleton variant="rect" width={800} height={300} />*/)
