@@ -9,7 +9,7 @@ export class NewsPostClass extends Component {
     const title = this.props.title;
     const image = this.props.image;
     const date = this.props.date;
-    const upcoming = this.props.upcoming;
+    // const upcoming = this.props.upcoming;
 
     return (
       <Fragment>
