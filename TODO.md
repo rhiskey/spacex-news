@@ -1,6 +1,8 @@
 
 # TODO
 
-1.) Counter anim 
-2.) Place template image if not found
-3.) Styling posts if no content
+1) Используются сторонние библиотеки. 
+2) Очень грязный код - все в комментариях
+
+4) Используется var
+5) Неправильно используется setState (например в setNews в Launch.jsx)

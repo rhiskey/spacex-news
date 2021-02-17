@@ -59,11 +59,11 @@ export class News extends Component {
     this.setState({ rockets });
 
     let extendedR = this.state.rockets.slice();
-    extendedR.push("All");
+    extendedR.push("");
     this.setState({ rockets: extendedR });
 
     let extendedL = this.state.launch_sites.slice();
-    extendedL.push("All");
+    extendedL.push("");
     this.setState({ launch_sites: extendedL });
 
   };
@@ -110,11 +110,11 @@ export class News extends Component {
 
     var filteredResults = result.filter(
       rocket => {
-        if ((fLauchSite.value && fRocketName.value == null) || (fLauchSite.value && fRocketName.value === "All"))
+        if ((fLauchSite.value && fRocketName.value == null) || (fLauchSite.value && fRocketName.value === ""))
           return rocket.launch_site.site_name.includes(fLauchSite.value);
-        else if ((fRocketName.value && fLauchSite.value == null) || (fRocketName.value && fLauchSite.value === "All"))
+        else if ((fRocketName.value && fLauchSite.value == null) || (fRocketName.value && fLauchSite.value === ""))
           return rocket.rocket.rocket_name.includes(fRocketName.value)
-        else if ((fLauchSite.value == null && fRocketName.value == null) || ((fLauchSite.value === "All" && fRocketName.value === "All")))
+        else if (fLauchSite.value === "" && fRocketName.value === "")
           return rocket
         else {
           return rocket.launch_site.site_name.includes(fLauchSite.value) &&
