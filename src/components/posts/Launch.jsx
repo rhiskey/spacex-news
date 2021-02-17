@@ -101,7 +101,7 @@ export class News extends Component {
       rockets,
       fLauchSite,
       fRocketName,
-      // isLoading,
+      isLoading,
       done
     } = this.state;
 
@@ -124,8 +124,8 @@ export class News extends Component {
     );
 
     var sortedLaunches = filteredResults.slice().sort((a, b) => b.launch_year - a.launch_year)
-    sortedLaunches = sortedLaunches.sort((a,b) => b.launch_date_unix - a.launch_date_unix)
-    
+    sortedLaunches = sortedLaunches.sort((a, b) => b.launch_date_unix - a.launch_date_unix)
+
     return (
       <Fragment>
         <center>
@@ -139,51 +139,95 @@ export class News extends Component {
               launch_sites={launch_sites}
               rockets={rockets}
           /> */}
-              <Fragment>
-                <table className="filter">
-                  <thead>
-                    <tr>
-                      <td>
-                        <p>Launch Site</p>
-                      </td>
-                      <td>
-                        <p>Rocket</p>
-                      </td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td width="300px">
-                        {" "}
+              {!isLoading ? (
+                // <div className="loading-skeleton">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="card-avatar-text">
+                      <div class="load-wraper">
+                        <div class="activity"></div>
+                      </div>
+                    </div>
+                    <div class="card-avatar-text">
+                      <div class="load-wraper">
+                        <div class="activity"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                // </div>
+              ) : (
+                  <Fragment>
+                    <div className="grid_container_filter">
+                      <div className="item launch__text"><p>Launch Site</p></div>
+                      <div className="item rocket__text"><p>Rocket</p></div>
+                      <div className="item launch__ddl">
                         <Dropdown
                           options={launch_sites}
                           onChange={this._onSelectLaunchSite.bind(this)}
                           placeholder="Select a Launch Site"
                           value={defaultOption1}
-                        />
-                      </td>
-                      <td width="300px">
+                        /></div>
+                      <div className="item rocket__ddl">
                         <Dropdown
                           options={rockets}
                           onChange={this._onSelectRocket.bind(this)}
                           placeholder="Select a Rocket"
                           value={defaultOption2}
-                        />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </Fragment>
+                        /></div>
+                    </div>
+                  </Fragment>
+                )}
+
               {!done ?
-                (<center><div className="loading-skeleton">
-                  Loading...
-                <br />
-                  <img src={process.env.PUBLIC_URL + '/preloader.gif'} alt="loading" />
-                </div>
-                
-                </center>
-      
-                /*<Skeleton variant="rect" width={800} height={300} />*/)
+                (
+                  <center>
+                    <div className="loading-skeleton">
+                      <div class="card">
+                        <div class="card-content">
+
+                          <div class="card-image">
+                            <div class="load-wraper">
+                              <div class="activity"></div>
+                            </div>
+                          </div>
+
+                          <div class="card-avatar-text">
+                            <div class="load-wraper">
+                              <div class="activity"></div>
+                            </div>
+                            <br />
+                            <div class="load-wraper">
+                              <div class="activity"></div>
+                            </div>
+                            <br />
+                            <div class="load-wraper">
+                              <div class="activity"></div>
+                            </div>
+                          </div>
+                        </div>
+
+                    
+                        {/* <div class="card-content">
+                      <div class="card-avatar">
+                        <div class="load-wraper circular">
+                          <div class="activity"></div>
+                        </div>
+                      </div>
+                      <div class="card-avatar-text">
+                        <div class="load-wraper">
+                          <div class="activity"></div>
+                        </div>
+                      </div>
+                    </div> */}
+                      </div>
+
+                      {/* <br />
+                  <img src={process.env.PUBLIC_URL + '/preloader.gif'} alt="loading" /> */}
+
+                    </div>
+                  </center>
+                )
                 : (
                   filteredResults.length <= 0 ? (<p>Nothing found...</p>) : (
                     <Container launches={sortedLaunches} />

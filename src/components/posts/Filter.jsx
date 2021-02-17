@@ -5,11 +5,11 @@ import '../../App.css';
 class Filter extends Component {
 
 
-render() {
-
+  render() {
     return (
       <div className="filterStuff">
-     <table className="filter">
+        
+        <table className="filter">
           <thead>
             <tr>
               <td>

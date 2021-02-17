@@ -39,7 +39,7 @@
   grid-template-columns: 50px 50px 50px 50px;
   grid-template-rows: auto; */
   grid-template-columns: 200px auto auto 100px;
-  grid-template-rows: 60px auto auto;
+  grid-template-rows: 50px auto auto;
   grid-template-areas: 
     "image title title date"
     "image text text text"
@@ -75,8 +75,8 @@
 
 .item_image_img{
   margin-left: 5%;
-  min-width: 100px;
-  min-height: 100px;
+  min-width: 64px;
+  min-height: 64px;
   max-height: 200px;
   max-width: 195px;
 }

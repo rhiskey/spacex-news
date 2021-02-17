@@ -16,14 +16,103 @@
 .news-body{
     margin-left: 5%;
     margin-right: 5%;
-    /* top: 10%; */
-    /* width: 50%;  */
-    /* margin: 0 auto;
-    text-align: left;
-    width: 800px; */
 }
 
 .loading-skeleton{
     margin-top: 10%;
 }
 
+.grid_container_filter{
+    display: grid !important; 
+    margin: auto; 
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "textlaunch" "textrocket"
+        "ddllaunch" "ddlrocket";
+    column-gap: 20px;
+    row-gap: 15px;
+}
+
+.item .launch__text{
+    grid-area: textlaunch;
+}
+
+.item .rocket__text{
+    grid-area: textrocket;
+}
+
+.item .launch__ddl{
+    grid-area: ddllaunch;
+}
+
+.item .rocket__ddl{
+    grid-area: ddlrocket;
+}
+
+/* Skeleton loading */
+.load-wraper{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(211,211,211);
+    z-index: 44;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.activity{
+    position: absolute;
+    left: -45%;
+    height: 100%;
+    width: 45%;
+    background-image: linear-gradient(to left, rgba(251,251,251, .05), rgba(251,251,251, .3), rgba(251,251,251, .6), rgba(251,251,251, .3), rgba(251,251,251, .05));
+    background-image: -moz-linear-gradient(to left, rgba(251,251,251, .05), rgba(251,251,251, .3), rgba(251,251,251, .6), rgba(251,251,251, .3), rgba(251,251,251, .05));
+    background-image: -webkit-linear-gradient(to left, rgba(251,251,251, .05), rgba(251,251,251, .3), rgba(251,251,251, .6), rgba(251,251,251, .3), rgba(251,251,251, .05));
+    animation: loading 1s infinite;
+    z-index: 45;
+}
+
+@keyframes loading {
+    0%{
+        left: -45%;
+    }
+    100%{
+        left: 100%;
+    }
+}
+.card{
+    margin: 20px;
+    height: 260px;
+    width: 400px;
+    position: relative;
+    float: left;
+}
+.card-image{
+    height: 200px;
+    width: 400px;
+    position: relative;
+}
+.card-content{
+    margin-top: 20px;
+    min-height: 40px;
+    display: flex;
+}
+.card-avatar{
+    width: 40px;
+    float: left;
+    flex: none;
+}
+.card-avatar-text{
+    margin-left: 20px;
+    float: left;
+}
+.card-content, .card-text, .card-avatar, .card-avatar-text{
+    height: 40px;
+    position: relative;
+}
+.card-content, .card-text, .card-avatar-text{
+    width: 100%;
+}
+.circular{
+    border-radius: 50%;
+}
