@@ -17,19 +17,37 @@ export class NewsPostClass extends Component {
           <div className="grid_container">
             <div className="item-image">
               {!image ? (
-                <div className="item_image_img rectangle"><p className="prev-text">Image Not Avalible</p></div>              
+                <div className="item_image_img rectangle">
+                  <p className="prev-text">Image Not Avalible</p>
+                </div>
               ) : (
-                <a href={this.props.video} ><img className="item_image_img" src={image} alt="Preview_Mark" /></a>
-                )}
+                <a href={this.props.video}>
+                  <img
+                    className="item_image_img"
+                    src={image}
+                    alt="Preview_Mark"
+                  />
+                </a>
+              )}
             </div>
             <div className="item-title">
-              <p><a className="item__title" href={this.props.link}>{title}</a></p>
+              <p>
+                <a className="item__title" href={this.props.link}>
+                  {title}
+                </a>
+              </p>
             </div>
             <div className="item-date">
-              <p className="item__date"> {new Date(date).toLocaleDateString()}</p>
+              <p className="item__date">
+                {" "}
+                {new Date(date).toLocaleDateString()}
+              </p>
             </div>
             <div className="item-text">
-              <p className="item__text"> {details === null ? (<p>Upcoming</p>) : (details)}</p>
+              <p className="item__text">
+                {" "}
+                {details === null ? <label>Upcoming</label> : details}
+              </p>
             </div>
           </div>
         </li>

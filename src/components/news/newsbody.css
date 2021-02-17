@@ -3,15 +3,17 @@
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
   list-style-type: none;
 }
+
 .rectangle {
   display: inline-block;
   width: 195px;
   height: 195px;
   margin: 5% 0% 5% 5%;
-  background:gray;
+  background: gray;
   text-align: center;
   color: whitesmoke;
 }
+
 .prev-text {
   margin-top: 45%
 }
@@ -20,11 +22,12 @@
   font-size: medium;
   font-weight: bold;
 }
+
 .item__text {
   font-size: small;
 }
 
- .item__date {
+.item__date {
   font-size: medium;
   font-weight: bold;
 }
@@ -34,9 +37,9 @@ a {
   /* color:floralwhite; */
 }
 
-.grid_container{
-  display: grid !important; 
-  margin: auto; 
+.grid_container {
+  display: grid !important;
+  margin: auto;
   /* grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end]; */
   /* grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line]; */
   /* display: grid;
@@ -44,19 +47,14 @@ a {
   grid-template-rows: auto; */
   grid-template-columns: 200px auto auto 100px;
   grid-template-rows: 50px auto auto;
-  grid-template-areas: 
-    "image title title date"
-    "image text text text"
-    "image text text text";
-
-    /* justify-items: center; */
-    /* justify-content: space-between; */
-    column-gap: 20px;
-    row-gap: 15px;
-
+  grid-template-areas: "image title title date" "image text text text" "image text text text";
+  /* justify-items: center; */
+  /* justify-content: space-between; */
+  column-gap: 20px;
+  row-gap: 15px;
 }
 
-.item-image{
+.item-image {
   grid-area: image;
   /* grid-row-start: 1; 
   grid-row-end: 6; 
@@ -64,21 +62,24 @@ a {
   grid-column-end: 2;  */
   /* grid-area: 1 / first / last-line / 3; */
 }
-.item-title{
+
+.item-title {
   grid-area: title;
   /* grid-area: 1 / line3 / row1-end / col4-start; */
 }
-.item-date{
+
+.item-date {
   grid-area: date;
   /* grid-area: 1 / col4-start / row1-end / 6; */
 }
-.item-text{
+
+.item-text {
   grid-area: text;
   margin-right: 5%;
   /* grid-area: 2 / line3 / last-line / 6; */
 }
 
-.item_image_img{
+.item_image_img {
   margin: 5% 5% 5% 5%;
   min-width: 64px;
   min-height: 64px;

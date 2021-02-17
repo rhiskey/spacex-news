@@ -1,11 +1,9 @@
 import React, { Component, Fragment } from "react";
 import Container from "./Container";
-// import Filter from "./Filter";
 import "react-dropdown/style.css";
-import Dropdown from "react-dropdown";
-import './Launch.css';
-// import Skeleton from '@material-ui/lab/Skeleton';
-
+// import Dropdown from "react-dropdown";
+import "./Launch.css";
+import DropdownCustom from "./Dropdown";
 
 export class News extends Component {
   state = {
@@ -15,7 +13,7 @@ export class News extends Component {
     fLauchSite: "",
     fRocketName: "",
     isLoading: undefined,
-    done: undefined
+    done: undefined,
   };
 
   componentDidMount() {
@@ -40,32 +38,30 @@ export class News extends Component {
 
   propSort = function (array, prop, desc) {
     array.sort(function (a, b) {
-      if (a[prop] < b[prop])
-        return desc ? 1 : -1;
-      if (a[prop] > b[prop])
-        return desc ? -1 : 1;
+      if (a[prop] < b[prop]) return desc ? 1 : -1;
+      if (a[prop] > b[prop]) return desc ? -1 : 1;
       return 0;
     });
-  }
+  };
 
   setNews = (result) => {
     this.setState({ result: result });
 
-
-    const launch_sites = [...new Set(result.map((x) => x.launch_site.site_name))];
+    const launch_sites = [
+      ...new Set(result.map((x) => x.launch_site.site_name)),
+    ];
     this.setState({ launch_sites });
 
     const rockets = [...new Set(result.map((x) => x.rocket.rocket_name))];
     this.setState({ rockets });
 
     let extendedR = this.state.rockets.slice();
-    extendedR.push("");
+    extendedR.unshift(null);
     this.setState({ rockets: extendedR });
 
     let extendedL = this.state.launch_sites.slice();
-    extendedL.push("");
+    extendedL.unshift(null);
     this.setState({ launch_sites: extendedL });
-
   };
 
   componentWillUnmount() {
@@ -78,13 +74,13 @@ export class News extends Component {
     });
   }
 
-  _onSelectLaunchSite(value) {
-    this.setLauchSite(value);
-  }
+  // _onSelectLaunchSite(value) {
+  //   this.setLauchSite(value);
+  // }
 
-  _onSelectRocket(value) {
-    this.setRocketName(value);
-  }
+  // _onSelectRocket(value) {
+  //   this.setRocketName(value);
+  // }
 
   setLauchSite = (fLauchSite) => {
     this.setState({ fLauchSite });
@@ -92,6 +88,14 @@ export class News extends Component {
 
   setRocketName = (fRocketName) => {
     this.setState({ fRocketName });
+  };
+
+  callbackFunctionLaunchSite = (childData) => {
+    this.setLauchSite(childData);
+  };
+
+  callbackFunctionRocket = (childData) => {
+    this.setRocketName(childData);
   };
 
   render() {
@@ -102,36 +106,47 @@ export class News extends Component {
       fLauchSite,
       fRocketName,
       isLoading,
-      done
+      done,
     } = this.state;
 
-    const defaultOption1 = launch_sites[4];
-    const defaultOption2 = rockets[3];
+    // const defaultOption1 = launch_sites[4];
+    // const defaultOption2 = rockets[3];
 
-    var filteredResults = result.filter(
-      rocket => {
-        if ((fLauchSite.value && fRocketName.value == null) || (fLauchSite.value && fRocketName.value === ""))
-          return rocket.launch_site.site_name.includes(fLauchSite.value);
-        else if ((fRocketName.value && fLauchSite.value == null) || (fRocketName.value && fLauchSite.value === ""))
-          return rocket.rocket.rocket_name.includes(fRocketName.value)
-        else if (fLauchSite.value === "" && fRocketName.value === "")
-          return rocket
-        else {
-          return rocket.launch_site.site_name.includes(fLauchSite.value) &&
-            rocket.rocket.rocket_name.includes(fRocketName.value)
-        }
+    let filteredResults = result.filter((rocket) => {
+      if (
+        (fLauchSite && fRocketName == null) ||
+        (fLauchSite && fRocketName === "")
+      )
+        return rocket.launch_site.site_name.includes(fLauchSite);
+      else if (
+        (fRocketName && fLauchSite == null) ||
+        (fRocketName && fLauchSite === "")
+      )
+        return rocket.rocket.rocket_name.includes(fRocketName);
+      else if (fLauchSite === "" && fRocketName === "") return rocket;
+      else {
+        return (
+          rocket.launch_site.site_name.includes(fLauchSite) &&
+          rocket.rocket.rocket_name.includes(fRocketName)
+        );
       }
-    );
+    });
 
-    var sortedLaunches = filteredResults.slice().sort((a, b) => b.launch_year - a.launch_year)
-    sortedLaunches = sortedLaunches.sort((a, b) => b.launch_date_unix - a.launch_date_unix)
+    let sortedLaunches = filteredResults
+      .slice()
+      .sort((a, b) => b.launch_year - a.launch_year);
+    sortedLaunches = sortedLaunches.sort(
+      (a, b) => b.launch_date_unix - a.launch_date_unix
+    );
 
     return (
       <Fragment>
         <center>
           <div className="news-page">
-            <div className="news-body" >
-              {!done ? (<h1>Launches</h1>) : (
+            <div className="news-body">
+              {!done ? (
+                <h1>Launches</h1>
+              ) : (
                 <h1>Launches {filteredResults.length}</h1>
               )}
               {/* 
@@ -141,74 +156,77 @@ export class News extends Component {
           /> */}
               {!isLoading ? (
                 // <div className="loading-skeleton">
-                <div class="card">
-                  <div class="card-content">
-                    <div class="card-avatar-text">
-                      <div class="load-wraper">
-                        <div class="activity"></div>
+                <div className="card">
+                  <div className="card-content">
+                    <div className="card-avatar-text">
+                      <div className="load-wraper">
+                        <div className="activity"></div>
                       </div>
                     </div>
-                    <div class="card-avatar-text">
-                      <div class="load-wraper">
-                        <div class="activity"></div>
+                    <div className="card-avatar-text">
+                      <div className="load-wraper">
+                        <div className="activity"></div>
                       </div>
                     </div>
                   </div>
                 </div>
-                // </div>
               ) : (
-                  <Fragment>
-                    <div className="grid_container_filter">
-                      <div className="item launch__text"><p>Launch Site</p></div>
-                      <div className="item rocket__text"><p>Rocket</p></div>
-                      <div className="item launch__ddl">
-                        <Dropdown
-                          options={launch_sites}
-                          onChange={this._onSelectLaunchSite.bind(this)}
-                          placeholder="Select a Launch Site"
-                          value={defaultOption1}
-                        /></div>
-                      <div className="item rocket__ddl">
-                        <Dropdown
-                          options={rockets}
-                          onChange={this._onSelectRocket.bind(this)}
-                          placeholder="Select a Rocket"
-                          value={defaultOption2}
-                        /></div>
+                // </div>
+                <Fragment>
+                  <div className="grid_container_filter">
+                    <div className="item launch__text">
+                      <p>Launch Site</p>
                     </div>
-                  </Fragment>
-                )}
+                    <div className="item rocket__text">
+                      <p>Rocket</p>
+                    </div>
+                    <div className="item launch__ddl">
+                      <DropdownCustom
+                        title="Select a Launch"
+                        list={launch_sites}
+                        // onChange={this._onSelectLaunchSite.bind(this)}
+                        parentCallback={this.callbackFunctionLaunchSite}
+                      />
+                    </div>
+                    <div className="item rocket__ddl">
+                      <DropdownCustom
+                        title="Select a Rocket"
+                        list={rockets}
+                        // onChange={this._onSelectLaunchSite.bind(this)}
+                        parentCallback={this.callbackFunctionRocket}
+                      />
+                    </div>
+                  </div>
+                </Fragment>
+              )}
 
-              {!done ?
-                (
-                  <center>
-                    <div className="loading-skeleton">
-                      <div class="card">
-                        <div class="card-content">
-
-                          <div class="card-image">
-                            <div class="load-wraper">
-                              <div class="activity"></div>
-                            </div>
-                          </div>
-
-                          <div class="card-avatar-text">
-                            <div class="load-wraper">
-                              <div class="activity"></div>
-                            </div>
-                            <br />
-                            <div class="load-wraper">
-                              <div class="activity"></div>
-                            </div>
-                            <br />
-                            <div class="load-wraper">
-                              <div class="activity"></div>
-                            </div>
+              {!done ? (
+                <center>
+                  <div>
+                    <div className="card">
+                      <div className="card-content">
+                        <div className="card-image">
+                          <div className="load-wraper">
+                            <div className="activity"></div>
                           </div>
                         </div>
 
-                    
-                        {/* <div class="card-content">
+                        <div className="card-avatar-text">
+                          <div className="load-wraper">
+                            <div className="activity"></div>
+                          </div>
+                          <br />
+                          <div className="load-wraper">
+                            <div className="activity"></div>
+                          </div>
+                          <br />
+                          <div className="load-wraper">
+                            <div className="activity"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* <div class="card-content">
                       <div class="card-avatar">
                         <div class="load-wraper circular">
                           <div class="activity"></div>
@@ -220,19 +238,17 @@ export class News extends Component {
                         </div>
                       </div>
                     </div> */}
-                      </div>
-
-                      {/* <br />
-                  <img src={process.env.PUBLIC_URL + '/preloader.gif'} alt="loading" /> */}
-
                     </div>
-                  </center>
-                )
-                : (
-                  filteredResults.length <= 0 ? (<p>Nothing found...</p>) : (
-                    <Container launches={sortedLaunches} />
-                  )
-                )}
+
+                    {/* <br />
+                  <img src={process.env.PUBLIC_URL + '/preloader.gif'} alt="loading" /> */}
+                  </div>
+                </center>
+              ) : filteredResults.length <= 0 ? (
+                <p>Nothing found...</p>
+              ) : (
+                <Container launches={sortedLaunches} />
+              )}
             </div>
           </div>
         </center>
@@ -240,4 +256,3 @@ export class News extends Component {
     );
   }
 }
-
