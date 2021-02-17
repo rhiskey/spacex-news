@@ -74,11 +74,12 @@ a {
 }
 .item-text{
   grid-area: text;
+  margin-right: 5%;
   /* grid-area: 2 / line3 / last-line / 6; */
 }
 
 .item_image_img{
-  margin-left: 5%;
+  margin: 5% 5% 5% 5%;
   min-width: 64px;
   min-height: 64px;
   max-height: 200px;
