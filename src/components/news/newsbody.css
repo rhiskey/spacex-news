@@ -21,14 +21,11 @@
   font-weight: bold;
 }
 .item__text {
-  /* padding-left: 20px; */
   font-size: small;
-  /* margin-top: 30px; */
 }
 
  .item__date {
   font-size: medium;
-  /* text-align: right;  */
   font-weight: bold;
 }
 
