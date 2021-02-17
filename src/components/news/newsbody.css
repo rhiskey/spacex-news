@@ -8,9 +8,9 @@
   width: 195px;
   height: 195px;
   margin: 5% 0% 5% 5%;
-  background: gainsboro;
+  background:gray;
   text-align: center;
-  color: white;
+  color: whitesmoke;
 }
 .prev-text {
   margin-top: 45%
@@ -29,6 +29,10 @@
   font-weight: bold;
 }
 
+a {
+  text-decoration: none;
+  /* color:floralwhite; */
+}
 
 .grid_container{
   display: grid !important; 

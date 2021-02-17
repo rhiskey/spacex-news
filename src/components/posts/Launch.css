@@ -9,9 +9,12 @@
     color: white; */
 
     /* width: 100%; */
-    margin: 30px auto;
+    /* margin: 30px auto; */
     text-align: left;
     width: auto;
+
+    background-color: #282c34;
+    color: floralwhite;
 }
 .news-body{
     margin-left: 5%;
@@ -19,7 +22,7 @@
 }
 
 .loading-skeleton{
-    margin-top: 10%;
+    /* margin-top: 10%; */
 }
 
 .grid_container_filter{
