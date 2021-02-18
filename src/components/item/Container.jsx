@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
-import NewsPostClass from "../news/newsbody";
+import NewsPostClass from "./item";
+
 class Container extends Component {
   render() {
     return (

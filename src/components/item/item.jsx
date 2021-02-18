@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 
-import "./newsbody.css";
+import "./item.css";
 
 export class NewsPostClass extends Component {
   render() {

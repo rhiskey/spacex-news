@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from "react";
-import Container from "./Container";
+import Container from "../item/Container";
 import "react-dropdown/style.css";
-// import Dropdown from "react-dropdown";
-import "./Launch.css";
-import DropdownCustom from "./Dropdown";
+import "./News.css";
+import Dropdown from "../dropdown/Dropdown";
 
 export class News extends Component {
   state = {
@@ -149,13 +148,7 @@ export class News extends Component {
               ) : (
                 <h1>Launches {filteredResults.length}</h1>
               )}
-              {/* 
-        < Filter
-              launch_sites={launch_sites}
-              rockets={rockets}
-          /> */}
               {!isLoading ? (
-                // <div className="loading-skeleton">
                 <div className="card">
                   <div className="card-content">
                     <div className="card-avatar-text">
@@ -171,7 +164,6 @@ export class News extends Component {
                   </div>
                 </div>
               ) : (
-                // </div>
                 <Fragment>
                   <div className="grid_container_filter">
                     <div className="item launch__text">
@@ -181,19 +173,17 @@ export class News extends Component {
                       <p>Rocket</p>
                     </div>
                     <div className="item launch__ddl">
-                      <DropdownCustom
+                      <Dropdown
                         title="Select a Launch"
                         list={launch_sites}
-                        // onChange={this._onSelectLaunchSite.bind(this)}
-                        parentCallback={this.callbackFunctionLaunchSite}
+                        onChange={this.callbackFunctionLaunchSite}
                       />
                     </div>
                     <div className="item rocket__ddl">
-                      <DropdownCustom
+                      <Dropdown
                         title="Select a Rocket"
                         list={rockets}
-                        // onChange={this._onSelectLaunchSite.bind(this)}
-                        parentCallback={this.callbackFunctionRocket}
+                        onChange={this.callbackFunctionRocket}
                       />
                     </div>
                   </div>
@@ -202,6 +192,7 @@ export class News extends Component {
 
               {!done ? (
                 <center>
+                  <img src={process.env.PUBLIC_URL + '/preloader.gif'} alt="loading" /> 
                   <div>
                     <div className="card">
                       <div className="card-content">
@@ -240,8 +231,6 @@ export class News extends Component {
                     </div> */}
                     </div>
 
-                    {/* <br />
-                  <img src={process.env.PUBLIC_URL + '/preloader.gif'} alt="loading" /> */}
                   </div>
                 </center>
               ) : filteredResults.length <= 0 ? (

@@ -1,5 +1,5 @@
 import './App.css';
-import {News} from './components/posts/Launch'
+import {News} from './components/posts/News'
 
 function App() {
   return (

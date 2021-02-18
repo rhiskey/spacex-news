@@ -3,7 +3,7 @@ import "./Dropdown.css";
 class DropdownCustom extends React.Component {
   sendData = (e) => {
     let { name, value } = e.target;
-    this.props.parentCallback(value);
+    this.props.onChange(value);
     console.log(name);
   };
 
