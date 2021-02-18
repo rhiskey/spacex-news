@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import Container from "../item/Container";
-import "react-dropdown/style.css";
 import "./News.css";
 import Dropdown from "../dropdown/Dropdown";
 
